@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=3 uid="uid://1w4f18s3jxwg"]
+
+[ext_resource type="Script" path="res://StartMenu.cs" id="1_ffeb2"]
+[ext_resource type="Script" path="res://MessageDialogBox.cs" id="2_osjjf"]
+[ext_resource type="Texture2D" uid="uid://bw46lq807i2g6" path="res://sprite_00.png" id="3_nlip4"]
+[ext_resource type="Script" path="res://ArrowContinue.cs" id="4_ef07q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f1a31"]
+bg_color = Color(0.704723, 0.827356, 0.805185, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Node2D" type="Node2D"]
+
+[node name="MessageDialogBox" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_osjjf")
+
+[node name="MessagePanel" type="Panel" parent="MessageDialogBox"]
+layout_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = 447.0
+offset_right = 1106.0
+offset_bottom = 597.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f1a31")
+script = ExtResource("1_ffeb2")
+
+[node name="MessageLabel" type="Label" parent="MessageDialogBox/MessagePanel"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 33.0
+offset_right = 1086.0
+offset_bottom = 56.0
+theme_override_colors/font_color = Color(0, 0.607843, 0.745098, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="MessageDialogBox/MessagePanel"]
+position = Vector2(567, 148)
+texture = ExtResource("3_nlip4")
+script = ExtResource("4_ef07q")
+
+[node name="CharacterNamePanel" type="Panel" parent="MessageDialogBox"]
+layout_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 15.0
+offset_top = 422.0
+offset_right = 265.0
+offset_bottom = 472.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f1a31")
+
+[node name="CharacterNameLabel" type="Label" parent="MessageDialogBox/CharacterNamePanel"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 7.0
+offset_right = 244.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0.87451, 0.654902, 0.109804, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
