@@ -27,3 +27,7 @@ project/assembly_name="Test"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/scripthl/plugin.cfg")
+
+[rendering]
+
+rendering_device/driver="opengl3"
