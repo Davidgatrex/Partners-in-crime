@@ -1,0 +1,18 @@
+[Dialog] Rouge
+Perdón por la tardanza, cogí un atasco...
+[End]
+[Dialog] Rouge
+Situación?
+[End]
+[Dialog] Insp. Pond
+Varón no identificado de 28 años. Tiene heridas abiertas en toda la espalda.
+[End]
+[Dialog] Rouge
+Parece que ha sido apuñalado varias veces...
+Aún así, no podemos descartar que se haya empleado un arma distinta.
+[End]
+[Choice] Insp. Pond
+Cierto... ¿Cuál crees que ha sido el arma homicida?
+[Option] Cuchillo::we-knife
+[Option] Pistola::we-gun
+[End]

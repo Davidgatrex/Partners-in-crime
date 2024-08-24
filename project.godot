@@ -13,7 +13,12 @@ config_version=5
 config/name="Test"
 run/main_scene="res://StartMenu.tscn"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [dotnet]
 

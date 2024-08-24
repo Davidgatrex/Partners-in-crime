@@ -20,7 +20,7 @@ public partial class ScriptParser
 		foreach(string s in lines){
 			var Fir = s.Split(" ")[0];
 			if(Fir == "[Dialog]"){
-				Gs.Dialogs.Add(new Dialog(s.Split(" ")[1], lines.Skip(pos).ToArray().Join("\n").Split("[End]")[0]));
+				Gs.Dialogs.Add(new Dialog(s.Split(" ").Skip(1).ToArray().Join(" "), lines.Skip(pos).ToArray().Join("\n").Split("[End]")[0]));
 			}
 			if(Fir == "[Choice]"){
 				var Members = lines.Skip(pos).ToArray().Join("\n").Split("[End]")[0].Split("\n");

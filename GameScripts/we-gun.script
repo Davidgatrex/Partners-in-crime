@@ -1,0 +1,32 @@
+[Dialog] Rouge
+Creo que fue una pistola...
+[End]
+[Dialog] Rouge
+De todas formas, ¿Cuándo llega el forense?
+[End]
+[Dialog] Dr. Williams
+Ahora mismo, siento llegar tan tarde.
+[End]
+[Dialog] Rouge
+¿El tráfico?
+[End]
+[Dialog] Dr. Williams
+El tráfico.
+[End]
+[Dialog] Insp. Pond
+Doctor, ¿cuál cree que fue el arma homicida?
+Yo estoy seguro de que le asesinaron con un cuchillo.
+[End]
+[Dialog] Rouge
+Yo diría que una pistola.
+[End]
+[Dialog] Dr. Williams
+A ver...
+[End]
+[Dialog] Dr. Williams
+...
+[End]
+[Dialog] Dr. Williams
+Pues así, a priori, diría que fue apuñalado y que después le dispararon con una pistola.
+[End]
+[Jump] unif-1

@@ -79,6 +79,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_f1a31")
 
+[node name="TextureRect" type="TextureRect" parent="MessageDialogBox/CharacterNamePanel"]
+layout_mode = 0
+offset_top = -379.0
+offset_right = 247.0
+offset_bottom = 4.0
+
 [node name="CharacterNameLabel" type="Label" parent="MessageDialogBox/CharacterNamePanel"]
 layout_mode = 0
 offset_left = 6.0

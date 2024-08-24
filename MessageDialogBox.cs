@@ -65,9 +65,11 @@ public partial class MessageDialogBox : Control
 						GD.Print($"Choice: {targets[choice]}");
 						DoDialog(new ScriptParser().Parse($"GameScripts/{targets[choice].Replace('\n', '\0')}.script"));
 						isChoice = false;
+						Visible = true;
 					}
 					if(script.Dialogs[count].Character == "[JUMP]" && !tmp){
 						DoDialog(new ScriptParser().Parse($"GameScripts/{script.Dialogs[count].Text.Replace('\n', '\0')}.script"));
+						Visible = true;
 					}
 				}
 				rel = Input.IsKeyPressed(Key.Space);

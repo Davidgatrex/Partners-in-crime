@@ -1,0 +1,16 @@
+[Dialog] Insp. Pond
+Vaya, eso sí que no lo esperaba.
+Bien, con esto zanjado toca ponerse con lo más difícil: El móvil del crímen.
+[End]
+[Dialog] Rouge
+Sí... La verdad es que tienes razón. Es complicado determinar los motivos del asesinato sin saber nada de ninguno de los dos.
+Y claro, al no saber nada, tampoco podemos hacer una ficha fiable.
+[End]
+[Dialog] Insp. Pond
+Ahora que lo dices, tenemos que buscarle un hogar a la hija de la víctima.
+[End]
+[Choice]
+¿Adoptar a su hija?
+[Option] Sí::ado/meet
+[Option] No::nad/exit
+[End]
