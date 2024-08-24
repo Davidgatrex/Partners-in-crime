@@ -7,6 +7,9 @@ public partial class StartMenu : Panel
 	public override void _Ready()
 	{
 		var a = new Scripting.ScriptParser().Parse("GameScripts/test.script");
+		GetParent<MessageDialogBox>().reachedEnding += (i)=>{
+			GD.Print($"Ending {i}");
+		};
 		GetParent<MessageDialogBox>().DoDialog(a);
 	}
 

@@ -10,6 +10,7 @@ public partial class MessageDialogBox : Control
 	private Panel ButtonPanel;
 	private GameScript script;
 	private bool attached = false;
+	public event Ending reachedEnding;
 	public override void _Ready()
 	{
 		MLabel = GetChild(0).GetChild<Label>(0);
@@ -35,6 +36,7 @@ public partial class MessageDialogBox : Control
 	public void DoDialog(GameScript _script){
 		script = _script;
 		attached = true;
+		count = 0;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -43,54 +45,75 @@ public partial class MessageDialogBox : Control
 	int choice = -1;
 	string[] targets = {"", "", "", ""};
 	bool isChoice = false;
+	bool ended = false;
 	public override void _Process(double delta)
 	{
-		
-		if(attached){
+		/*
+		if(ended){
+			this.Dispose();
+		}
+		*/
+		if(attached && !ended){
 			Visible = true;
 			if(count == script.Dialogs.Count){
 				if(((Input.IsKeyPressed(Key.Space) && !rel && !isChoice) || (choice > -1 && isChoice))){
 					attached = false;
 					count = 0;
 					Visible = false;
+					bool tmp = isChoice;
 					if(isChoice){
 						GD.Print($"Choice: {targets[choice]}");
 						DoDialog(new ScriptParser().Parse($"GameScripts/{targets[choice].Replace('\n', '\0')}.script"));
 						isChoice = false;
+					}
+					if(script.Dialogs[count].Character == "[JUMP]" && !tmp){
+						DoDialog(new ScriptParser().Parse($"GameScripts/{script.Dialogs[count].Text.Replace('\n', '\0')}.script"));
 					}
 				}
 				rel = Input.IsKeyPressed(Key.Space);
 			}
 			else{
 				if(((Input.IsKeyPressed(Key.Space) && !rel && !isChoice) || (choice > -1 && isChoice)) || count == 0){
-					NLabel.Text = script.Dialogs[count].Character;
-					MLabel.Text = script.Dialogs[count].Text;
+					bool tmp = isChoice;
+					if(script.Dialogs[count].Character == "[ENDING]"){
+						Visible = false;
+						reachedEnding.Invoke(int.Parse(script.Dialogs[count].Text));
+						ended = true;
+						return;
+					}
 					if(isChoice){
 						GD.Print($"Choice: {targets[choice]}");
 						DoDialog(new ScriptParser().Parse($"GameScripts/{targets[choice].Replace('\n', '\0')}.script"));
 						isChoice = false;
 					}
-					if(script.Dialogs[count].type == DialogType.Choice){
-						int i = 0;
-						isChoice = true;
-						foreach(ButtonData d in script.Dialogs[count].buttons){
-							var b = ButtonPanel.GetChild<Button>(i);
-							b.Text = d.Text;
-							b.Visible = true;
-							targets[i] = d.Target;
-							i++;
-						}
-						ButtonPanel.Size = new Vector2(ButtonPanel.Size.X, 20+(78*(i)));
-						ButtonPanel.Visible = true;
-					}else{
-						ButtonPanel.Visible = false;
-						isChoice = false;
-						choice = -1;
-						foreach (Button b in ButtonPanel.GetChildren()){
-							b.Visible = false;
-						}
+					if(script.Dialogs[count].Character == "[JUMP]" && !tmp){
+						DoDialog(new ScriptParser().Parse($"GameScripts/{script.Dialogs[count].Text.Replace('\n', '\0')}.script"));
 					}
-					count++;
+					else{
+						NLabel.Text = script.Dialogs[count].Character;
+						MLabel.Text = script.Dialogs[count].Text;
+						if(script.Dialogs[count].type == DialogType.Choice){
+							int i = 0;
+							isChoice = true;
+							foreach(ButtonData d in script.Dialogs[count].buttons){
+								var b = ButtonPanel.GetChild<Button>(i);
+								b.Text = d.Text;
+								b.Visible = true;
+								targets[i] = d.Target;
+								i++;
+							}
+							ButtonPanel.Size = new Vector2(ButtonPanel.Size.X, 20+(78*(i)));
+							ButtonPanel.Visible = true;
+						}else{
+							ButtonPanel.Visible = false;
+							isChoice = false;
+							choice = -1;
+							foreach (Button b in ButtonPanel.GetChildren()){
+								b.Visible = false;
+							}
+						}
+						count++;
+					}
 				}
 				rel = Input.IsKeyPressed(Key.Space);
 			}
@@ -98,3 +121,5 @@ public partial class MessageDialogBox : Control
 		
 	}
 }
+
+public delegate void Ending(int i);

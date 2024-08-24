@@ -32,6 +32,12 @@ public partial class ScriptParser
 				}
 				Gs.Dialogs.Add(d);
 			}
+			if(Fir == "[Jump]"){
+				Gs.Dialogs.Add(new Dialog("[JUMP]", s.Split(" ")[1]));
+			}
+			if(Fir == "[Ending]"){
+				Gs.Dialogs.Add(new Dialog("[ENDING]", s.Split(" ")[1]));
+			}
 			pos += 1;
 		}
 		GD.Print($"{Gs.Dialogs.Count} elements");
