@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://1w4f18s3jxwg"]
+[gd_scene load_steps=8 format=3 uid="uid://1w4f18s3jxwg"]
 
 [ext_resource type="Script" path="res://StartMenu.cs" id="1_ffeb2"]
 [ext_resource type="Script" path="res://MessageDialogBox.cs" id="2_osjjf"]
 [ext_resource type="Texture2D" uid="uid://bw46lq807i2g6" path="res://sprite_00.png" id="3_nlip4"]
 [ext_resource type="Script" path="res://ArrowContinue.cs" id="4_ef07q"]
 [ext_resource type="StyleBox" uid="uid://dlba3fy61elo8" path="res://new_style_box_flat.tres" id="5_5lg21"]
+[ext_resource type="Texture2D" uid="uid://dwbr7vbnkaf0w" path="res://_4bbd8a4f-099d-4cdd-a11a-4be3d956c832.jpg" id="6_5ih3j"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f1a31"]
 bg_color = Color(0.704723, 0.827356, 0.805185, 1)
@@ -19,6 +20,11 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [node name="Node2D" type="Node2D"]
+
+[node name="4Bbd8a4f-099d-4Cdd-a11a-4Be3d956c832" type="Sprite2D" parent="."]
+position = Vector2(579, 317)
+scale = Vector2(1.15234, 0.7)
+texture = ExtResource("6_5ih3j")
 
 [node name="MessageDialogBox" type="Control" parent="."]
 layout_mode = 3

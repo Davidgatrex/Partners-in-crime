@@ -14,7 +14,7 @@ public partial class MessageDialogBox : Control
 	public override void _Ready()
 	{
 		MLabel = GetChild(0).GetChild<Label>(0);
-		NLabel = GetChild(1).GetChild<Label>(0);
+		NLabel = GetChild(1).GetChild<Label>(1);
 		ButtonPanel = GetChild<Panel>(2);
 		ButtonPanel.Visible = false;
 		Visible = false;
