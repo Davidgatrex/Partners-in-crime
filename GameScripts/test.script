@@ -8,3 +8,7 @@ Hola, muy buenas
 Buenos días a todos.
 Dónde es la fiesta de cumpleaños?
 [End]
+[Choice] Narrador
+Cuanto es 2+2?
+[Option] 4::C
+[Option] 22::B

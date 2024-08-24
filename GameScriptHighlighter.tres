@@ -1,3 +1,10 @@
 [gd_resource type="CodeHighlighter" format=3 uid="uid://1251tccsxiw"]
 
 [resource]
+number_color = Color(1, 0, 0, 1)
+symbol_color = Color(0, 1, 0, 1)
+function_color = Color(0, 0, 1, 1)
+member_variable_color = Color(1, 1, 0, 1)
+keyword_colors = {
+"[Dialogue]": Color(1, 0, 1, 1)
+}

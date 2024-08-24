@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 
 namespace Scripting;
+
 public partial class ScriptParser
 {
 	public GameScript Parse(string text, bool isPath)
@@ -23,7 +24,13 @@ public partial class ScriptParser
 			}
 			if(Fir == "[Choice]"){
 				var Members = lines.Skip(pos).ToArray().Join("\n").Split("[End]")[0].Split("\n");
-				
+				Dialog d = new Dialog(s.Split(" ").Skip(1).ToArray().Join(" "), Members[0], DialogType.Choice);
+				foreach (string st in Members){
+					if(st.Split(" ")[0] == "[Option]"){
+						d.buttons.Add(new ButtonData(st.Split("[Option]")[1].Split("::")[0], st.Split("[Option]")[1].Split("::")[1]));
+					}
+				}
+				Gs.Dialogs.Add(d);
 			}
 			pos += 1;
 		}
@@ -42,12 +49,20 @@ public enum DialogType{
 	Choice
 }
 
-
+public class ButtonData{
+	public string Text {get; set;}
+	public string Target {get; set;}
+	public ButtonData(string te, string tg){
+		Text = te;
+		Target = tg;
+	}
+}
 
 public class Dialog{
 	public string Character {get; private set;}
 	public string Text {get; private set;}
 	public DialogType type = DialogType.Standard;
+	public List<ButtonData> buttons = new List<ButtonData>();
 
 	public Dialog(string c, string t){
 		Character = c;
